@@ -1,2 +1,0 @@
-com/invest/server/web/GreetingControllerTest.java
- com.invest.server.web.GreetingControllerTest
