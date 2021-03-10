@@ -1,7 +1,5 @@
 package com.invest.server.api;
 
-import com.invest.server.domain.Invest;
-import com.invest.server.domain.Product;
 import com.invest.server.dto.InvestRequestDto;
 import com.invest.server.dto.InvestResponseDto;
 import com.invest.server.service.InvestService;
@@ -27,21 +25,17 @@ public class InvestApiController {
     @PostMapping("/invest")
     public InvestResponseDto investProduct(@RequestHeader(value = "X-USER-ID") Long userId, @RequestBody @Valid InvestRequestDto request) {
         // TODO: 현재 상품의 총 투자 금액을 조회한다.
-        Product product = productService.productByProductId(request.getProductId());
-
+        //Product product = productService.productByProductId(request.getProductId());
         // TODO: 쿼리에서 null 케이스 처리했음으로 값이 존재함
-        if (product.getTotalInvestingAmount() > (product.getTotalInvestingAmount() + request.getInvestAmount())) {
-            // 에러 발생
-        }
-        Invest invest = Invest.builder()
-                .productId(request.getProductId())
-                .investAmount(request.getInvestAmount())
-                .userId(userId)
-                .build();
-        investService.investProduct(invest);
-        return new InvestResponseDto(invest.getInvestId());
+
+        // TODO: 현재모집금액 + 투자금액 > 총모집금액 = 예외발생(sold-out)
+
+        // TODO: Invest 정보 저장
+
+        // TODO: Product 에 현재모집금액, 투자자수 증가
+
+        investService.investProduct(userId, request);
+        return new InvestResponseDto(request.getProductId());
     }
-
     // TODO: 내가 투자한 투자 목록 API
-
 }

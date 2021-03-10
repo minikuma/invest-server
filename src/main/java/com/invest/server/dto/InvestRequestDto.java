@@ -10,6 +10,6 @@ import lombok.Data;
 
 @Data
 public class InvestRequestDto {
-    private int investAmount;
+    private int investingAmount;
     private Long productId;
 }

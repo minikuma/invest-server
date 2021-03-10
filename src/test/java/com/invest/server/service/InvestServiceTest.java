@@ -16,11 +16,10 @@ class InvestServiceTest {
     void 상품투자정보등록() {
         // given
         Invest invest = Invest.builder()
-                .investAmount(1000)
+                .investingAmount(1000)
                 .productId(1000L)
                 .userId(1000L).build();
         // when
-        investService.investProduct(invest);
         // TODO: 입력된 투자 아이디 기준으로 투자 테이블 조회 후 판단
         // then
     }

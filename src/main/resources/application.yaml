@@ -1,7 +1,7 @@
 spring:
   datasource:
     initialization-mode: always
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:tcp://localhost/~/invest
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -19,5 +19,5 @@ spring:
       path: /h2-console
 logging:
   level:
-    org.hibernate.SQL: debug
+    org.hibernate.SQL: INFO
 #    org.hibernate.type: trace

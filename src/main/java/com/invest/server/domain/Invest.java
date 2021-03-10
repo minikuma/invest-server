@@ -19,21 +19,22 @@ import javax.persistence.*;
 public class Invest extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "invest_id")
     private Long investId;
 
-    @Column(nullable = false)
+    @Column(name = "product_id", nullable = false)
     private Long productId;
 
-    @Column(nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column
-    private int investAmount;
+    @Column(name = "investing_amount")
+    private int investingAmount;
 
     @Builder
-    public Invest(Long productId, Long userId, int investAmount) {
+    public Invest(Long productId, Long userId, int investingAmount) {
         this.productId = productId;
         this.userId = userId;
-        this.investAmount = investAmount;
+        this.investingAmount = investingAmount;
     }
 }
