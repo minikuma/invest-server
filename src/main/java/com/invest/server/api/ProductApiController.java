@@ -36,9 +36,4 @@ public class ProductApiController {
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .collect(Collectors.toList());
     }
-
-    // TODO: 투자하기 API
-
-    // TODO: 내가 투자한 투자 목록 API
-
 }

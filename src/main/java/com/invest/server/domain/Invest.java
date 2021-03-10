@@ -1,6 +1,7 @@
 package com.invest.server.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,8 +25,15 @@ public class Invest extends BaseTimeEntity {
     private Long productId;
 
     @Column(nullable = false)
-    private String userId;
+    private Long userId;
 
     @Column
     private int investAmount;
+
+    @Builder
+    public Invest(Long productId, Long userId, int investAmount) {
+        this.productId = productId;
+        this.userId = userId;
+        this.investAmount = investAmount;
+    }
 }

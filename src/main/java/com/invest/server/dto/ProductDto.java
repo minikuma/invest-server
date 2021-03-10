@@ -18,6 +18,8 @@ public class ProductDto {
     private Long productId;
     private String title;
     private int totalInvestingAmount;
+    private int productPeriod;
+    private String recruitStatus;
     private LocalDateTime createdAt;
     private LocalDateTime finishedAt;
 
@@ -25,6 +27,8 @@ public class ProductDto {
         this.productId = product.getProductId();
         this.title = product.getTitle();
         this.totalInvestingAmount = product.getTotalInvestingAmount();
+        this.productPeriod = product.getProductPeriod();
+        this.recruitStatus = product.getRecruitStatus();
         this.createdAt = product.getCreatedAt();
         this.finishedAt = product.getFinishedAt();
     }

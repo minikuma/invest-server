@@ -29,9 +29,17 @@ public class Product extends BaseTimeEntity {
     @ColumnDefault("0")
     private int totalInvestingAmount;
 
+    @Column
+    private int productPeriod;
+
+    @Column
+    private String recruitStatus;
+
     @Builder
-    public Product(String title, int totalInvestingAmount) {
+    public Product(String title, int totalInvestingAmount, int productPeriod, String recruitStatus) {
         this.title = title;
         this.totalInvestingAmount = totalInvestingAmount;
+        this.productPeriod = productPeriod;
+        this.recruitStatus = recruitStatus;
     }
 }
