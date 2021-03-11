@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -16,10 +18,12 @@ public class InvestService {
 
     private final InvestRepository investRepository;
     private final ProductService productService;
+
     /**
-     * 상품 투자
-     * @param
-     * @return
+     * 상품 투자 메서드
+     * @param userId (사용자)
+     * @param request (투자금액, 상품아이디)
+     * @return 투자아이디
      */
     @Transactional
     public Long investProduct(Long userId, InvestRequestDto request) {
@@ -31,5 +35,14 @@ public class InvestService {
         Invest invest = Invest.createInvest(userId, product.getProductId(), investProduct.getInvestingAmount(), investProduct);
         investRepository.save(invest);
         return invest.getInvestId();
+    }
+
+    /**
+     * 투자한 상품 목록
+     * @param userId 사용자아이디
+     * @return 투자목록
+     */
+    public List<Invest> investProductByUserId(Long userId) {
+        return investRepository.findInvestByUserId(userId);
     }
 }

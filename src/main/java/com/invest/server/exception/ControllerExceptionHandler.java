@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @ControllerAdvice(annotations = RestController.class)
 public class ControllerExceptionHandler {
 
@@ -16,6 +18,6 @@ public class ControllerExceptionHandler {
                 .code(errorCode.getCode())
                 .status(errorCode.getStatus())
                 .message(e.toString());
-        return new ResponseEntity<>(response, HttpStatus.resolve(errorCode.getStatus()));
+        return new ResponseEntity<>(response, Objects.requireNonNull(HttpStatus.resolve(errorCode.getStatus())));
     }
 }

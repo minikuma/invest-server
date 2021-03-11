@@ -2,7 +2,7 @@ package com.invest.server.exception;
 
 public class CustomException extends RuntimeException {
     private static final long serialVersionUID = 1L;
-    private ErrorCode errorCode;
+    private final ErrorCode errorCode;
 
     public CustomException(ErrorCode errorCode) {
         super(errorCode.getMessage());

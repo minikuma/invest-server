@@ -34,7 +34,6 @@ public class Invest extends BaseTimeEntity {
     @OneToMany(mappedBy = "invest", cascade = CascadeType.ALL)
     private List<InvestProduct> investProducts = new ArrayList<>();
 
-
     public void addInvestProduct(InvestProduct investProduct) {
         investProducts.add(investProduct);
         investProduct.setInvest(this);

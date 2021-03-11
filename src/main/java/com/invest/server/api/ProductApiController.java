@@ -4,11 +4,14 @@ import com.invest.server.dto.ProductDto;
 import com.invest.server.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.WeakHashMap;
 import java.util.stream.Collectors;
 
 /**
@@ -30,10 +33,11 @@ public class ProductApiController {
      * @return 상품 리스트
      */
     @GetMapping("/products")
-    public List<ProductDto> productAll() {
-        return productService.productList()
+    public ResponseEntity<List<ProductDto>> productAll() {
+        List<ProductDto> products = productService.productList()
                 .stream()
                 .map(product -> modelMapper.map(product, ProductDto.class))
                 .collect(Collectors.toList());
+           return ResponseEntity.ok(products);
     }
 }

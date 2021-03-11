@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 public class ErrorResponse {
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private final LocalDateTime timeStamp = LocalDateTime.now();
     private String message;
     private String code;
     private int status;
@@ -31,5 +31,4 @@ public class ErrorResponse {
         this.message = message;
         return this;
     }
-
 }
