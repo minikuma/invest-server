@@ -1,13 +1,8 @@
 package com.invest.server.exception;
 
-/**
- * 비즈니스 에러 처리 코드 클래스
- * @version 1.0
- * @author Jeon Jihoon
- */
-
 public enum ErrorCode {
-    SOLD_OUT(400, "S001", "Sold Out");
+
+    SOLD_OUT(200, "SOO1", "SOLD OUT");
 
     private final String code;
     private final String message;
@@ -25,7 +20,7 @@ public enum ErrorCode {
         return status;
     }
 
-    ErrorCode(final int status, final String code, final String message) {
+    ErrorCode(int status, String code, String message) {
         this.status = status;
         this.code = code;
         this.message = message;

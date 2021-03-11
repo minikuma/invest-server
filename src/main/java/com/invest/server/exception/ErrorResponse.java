@@ -1,10 +1,35 @@
 package com.invest.server.exception;
 
-/**
- * 에러 응답 클래스
- * @version 1.0
- * @author Jeon Jihoon
- */
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
+@NoArgsConstructor
+@Getter
 public class ErrorResponse {
+    private LocalDateTime timestamp = LocalDateTime.now();
+    private String message;
+    private String code;
+    private int status;
+
+    static public ErrorResponse create() {
+        return new ErrorResponse();
+    }
+
+    public ErrorResponse code(String code) {
+        this.code = code;
+        return this;
+    }
+
+    public ErrorResponse status(int status) {
+        this.status = status;
+        return this;
+    }
+
+    public ErrorResponse message(String message) {
+        this.message = message;
+        return this;
+    }
+
 }

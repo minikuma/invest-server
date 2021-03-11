@@ -1,9 +1,8 @@
 package com.invest.server.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.invest.server.exception.CustomException;
+import com.invest.server.exception.NotEnoughProductException;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -17,8 +16,9 @@ import java.util.List;
  */
 
 @Entity
-@Getter
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "product")
 public class Product extends BaseTimeEntity {
     @Id
     @Column(name = "product_id")
@@ -48,17 +48,8 @@ public class Product extends BaseTimeEntity {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<InvestProduct> investProducts = new ArrayList<>();
 
-    @Builder
-    public Product(Long productId, String title, int totalInvestingAmount, int currentInvestingAmount, int investorCount, String recruitStatus, int productPeriod) {
-        this.productId = productId;
-        this.title = title;
-        this.totalInvestingAmount = totalInvestingAmount;
-        this.currentInvestingAmount = currentInvestingAmount;
-        this.investorCount = investorCount;
-        this.recruitStatus = recruitStatus;
-        this.productPeriod = productPeriod;
-    }
 
+    // TODO: 비즈니스 로직
     public void addInvestorCount() {
         this.investorCount++;
     }
@@ -67,6 +58,7 @@ public class Product extends BaseTimeEntity {
         int resultAmount = this.currentInvestingAmount + amount;
         if (resultAmount > this.totalInvestingAmount) {
             // TODO: Sold-out 처리
+            throw new NotEnoughProductException();
         }
         this.currentInvestingAmount = resultAmount;
     }

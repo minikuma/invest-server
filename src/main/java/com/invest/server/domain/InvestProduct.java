@@ -7,27 +7,29 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+import static javax.persistence.FetchType.*;
+
 @Entity
+@Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "invest_product")
 public class InvestProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "invest_product_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "invest_id")
     private Invest invest;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
-    private int investingAmount;
-    private int investorCount;
+    private int investingAmount; // 투자 가격
 
+    // TODO: 상품 투자 생성 메서드
     public static InvestProduct createInvestProduct(Product product, int investingAmount) {
         InvestProduct investProduct = new InvestProduct();
         investProduct.setProduct(product);
@@ -36,5 +38,4 @@ public class InvestProduct {
         product.addInvestingAmount(investingAmount);
         return investProduct;
     }
-
 }
