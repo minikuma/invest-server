@@ -3,6 +3,7 @@ package com.invest.server.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class Invest extends BaseTimeEntity {
 
     /**
      * 투자 도메인과 상품 도메인 연관 관계 설정 메서드
+     *
      * @param investProduct (투자상품 연관도메인)
      */
     public void addInvestProduct(InvestProduct investProduct) {
@@ -45,13 +47,13 @@ public class Invest extends BaseTimeEntity {
 
     /**
      * 투자 생성 메서드
-     * @param userId (사용자)
-     * @param productId (상품 아이디)
+     *
+     * @param userId          (사용자)
+     * @param productId       (상품 아이디)
      * @param investingAmount (투자 금액)
-     * @param investProducts (투자상품 클래스)
+     * @param investProducts  (투자상품 클래스)
      * @return 투자 클래스
      */
-
     public static Invest createInvest(Long userId, Long productId, int investingAmount, InvestProduct... investProducts) {
         Invest invest = new Invest();
         for (InvestProduct ip : investProducts) {
@@ -61,5 +63,12 @@ public class Invest extends BaseTimeEntity {
         invest.setInvestingAmount(investingAmount);
         invest.setUserId(userId);
         return invest;
+    }
+
+    @Builder
+    public Invest(Long productId, Long userId, int investingAmount) {
+        this.productId = productId;
+        this.userId = userId;
+        this.investingAmount = investingAmount;
     }
 }

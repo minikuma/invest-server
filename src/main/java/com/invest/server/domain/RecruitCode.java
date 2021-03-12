@@ -12,7 +12,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum RecruitCode {
-    PROCESS("모집중"),
-    COMPLETED("모집완료");
-    private String description;
+    모집중, 모집완료
 }

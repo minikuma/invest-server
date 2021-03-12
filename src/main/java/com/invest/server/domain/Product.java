@@ -68,8 +68,18 @@ public class Product extends BaseTimeEntity {
         }
         // 총 상품 투자금액과 투자한 금액이 일치하는 경우 상품 투자 모집 마감 처리
         if (resultAmount == this.totalInvestingAmount) {
-            this.setRecruitCode(RecruitCode.COMPLETED);
+            this.setRecruitCode(RecruitCode.모집완료);
         }
         this.currentInvestingAmount = resultAmount;
+    }
+    @Builder
+    public Product(Long productId, String title, int totalInvestingAmount, int currentInvestingAmount, int investorCount, RecruitCode recruitCode, int productPeriod) {
+        this.productId = productId;
+        this.title = title;
+        this.totalInvestingAmount = totalInvestingAmount;
+        this.currentInvestingAmount = currentInvestingAmount;
+        this.investorCount = investorCount;
+        this.recruitCode = recruitCode;
+        this.productPeriod = productPeriod;
     }
 }

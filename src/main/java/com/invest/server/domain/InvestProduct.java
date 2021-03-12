@@ -29,7 +29,7 @@ public class InvestProduct {
 
     private int investingAmount; // 투자 가격
 
-    // TODO: 상품 투자 생성 메서드
+    // 상품 투자 생성 메서드
     public static InvestProduct createInvestProduct(Product product, int investingAmount) {
         InvestProduct investProduct = new InvestProduct();
         investProduct.setProduct(product);

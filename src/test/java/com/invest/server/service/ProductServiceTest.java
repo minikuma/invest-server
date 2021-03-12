@@ -27,10 +27,10 @@ class ProductServiceTest {
     @Test
     void 상품ID기준조회_예상값비교() {
         // given
-        String expected = "모집완료";
+        //String expected = "모집완료";
         // when
-        Product productByProductId = productService.productByProductId(1L);
+        //Product productByProductId = productService.productByProductId(1L);
         // then
-        assertEquals(productByProductId.getRecruitStatus(), expected);
+        //assertEquals(productByProductId.getRecruitStatus(), expected);
     }
 }
