@@ -23,8 +23,9 @@ import java.time.LocalDateTime;
 public class BaseTimeEntity {
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createdAt;
+    private LocalDateTime startedAt;
 
-    @LastModifiedDate
+    @CreatedDate
+    @Column(updatable = false)
     private LocalDateTime finishedAt;
 }

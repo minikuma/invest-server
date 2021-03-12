@@ -21,9 +21,7 @@ class ProductServiceTest {
         int expectedCount = 1;
         // given: Local 에 구성하여 미리 등록된 상품 정보 기준
         // when
-        List<Product> productList = productService.productList();
         // then
-        assertEquals(productList.size(), expectedCount);
     }
 
     @Test

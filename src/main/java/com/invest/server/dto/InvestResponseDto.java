@@ -12,5 +12,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class InvestResponseDto {
-    private Long productId;
+    private Long investId; // 투자 아이디
 }

@@ -4,6 +4,12 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * 사용자 기준 투자 상품 조회용 DTO (JPQL 사용)
+ * @version 1.0
+ * @author Jeon Jihoon
+ */
+
 @Data
 public class InvestProductSearchQueryDto {
     private Long productId;          // 상품아이디

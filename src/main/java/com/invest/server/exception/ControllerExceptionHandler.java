@@ -1,5 +1,6 @@
 package com.invest.server.exception;
 
+import com.invest.server.exception.biz.NotEnoughProductException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,6 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
+
+/**
+ * 컨트롤러 예외 처리
+ * @version 1.0
+ * @author Jeon Jihoon
+ */
 
 @ControllerAdvice(annotations = RestController.class)
 public class ControllerExceptionHandler {

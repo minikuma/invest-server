@@ -5,6 +5,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/**
+ * 예외 처리 응답
+ * @version 1.0
+ * @author Jeon Jihoon
+ */
+
 @NoArgsConstructor
 @Getter
 public class ErrorResponse {
