@@ -8,8 +8,8 @@ package com.invest.server.exception;
 
 public enum ErrorCode {
 
-    SOLD_OUT(200, "SOO1", "SOLD OUT"),
-    NOT_FOUND(200, "S002", "NOT FOUND");
+    SOLD_OUT(200, "SOO1", "SOLD_OUT"),
+    NOT_FOUND(200, "S002", "NOT_FOUND");
 
     private final String code;
     private final String message;

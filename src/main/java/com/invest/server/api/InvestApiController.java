@@ -1,6 +1,7 @@
 package com.invest.server.api;
 
 import com.invest.server.dto.InvestRequestDto;
+import com.invest.server.dto.InvestResponseDto;
 import com.invest.server.repository.invest.query.InvestProductSearchQueryDto;
 import com.invest.server.repository.invest.query.InvestProductSearchQueryRepository;
 import com.invest.server.service.InvestService;
@@ -33,11 +34,11 @@ public class InvestApiController {
      */
 
     @PostMapping("/invest")
-    public ResponseEntity<Long> investProduct(@RequestHeader(value = "X-USER-ID")
+    public ResponseEntity<InvestResponseDto> investProduct(@RequestHeader(value = "X-USER-ID")
                                                            Long userId,
                                                            @RequestBody @Valid InvestRequestDto request) {
-        Long investId = investService.investProduct(userId, request);
-        return ResponseEntity.ok(investId);
+        InvestResponseDto findInvest = investService.investProduct(userId, request);
+        return ResponseEntity.ok(findInvest);
     }
 
     /**

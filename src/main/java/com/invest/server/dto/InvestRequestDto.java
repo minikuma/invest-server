@@ -1,5 +1,6 @@
 package com.invest.server.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  */
 
 @Data
+@AllArgsConstructor
 public class InvestRequestDto {
     private int investingAmount; // 투자금액
     private Long productId;      // 상품 아이디
